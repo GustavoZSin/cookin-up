@@ -3,20 +3,27 @@ import SelecionarIngredientes from './SelecionarIngredientes.vue';
 import Tag from './Tag.vue';
 import SuaLista from './SuaLista.vue';
 import BotaoPrincipal from './BotaoPrincipal.vue';
+import MostrarReceitas from './MostrarReceitas.vue';
+
+type Pagina = 'SelecionarIngredientes' | 'MostrarReceitas';
 
 export default {
     data() {
         return {
-            ingredientes: [] as string[]
+            ingredientes: [] as string[],
+            conteudo: 'SelecionarIngredientes' as Pagina
         };
     },
-    components: { SelecionarIngredientes, Tag, SuaLista, BotaoPrincipal },
+    components: { SelecionarIngredientes, Tag, SuaLista, BotaoPrincipal, MostrarReceitas },
     methods: {
         adicionarIngrediente(ingrediente: string) {
             this.ingredientes.push(ingrediente);
         },
         removerIngrediente(ingrediente: string) {
             this.ingredientes = this.ingredientes.filter(i => i !== ingrediente);
+        },
+        navegar(pagina: Pagina) {
+            this.conteudo = pagina;
         }
     },
 }
@@ -26,10 +33,14 @@ export default {
     <main class="conteudo-principal">
         <SuaLista :ingredientes="ingredientes" />
 
-        <SelecionarIngredientes @adicionar-ingrediente="adicionarIngrediente"
-            @remover-ingrediente="removerIngrediente" />
+        <KeepAlive include="SelecionarIngredientes">
+            <SelecionarIngredientes v-if="conteudo === 'SelecionarIngredientes'"
+                @adicionar-ingrediente="adicionarIngrediente" @remover-ingrediente="removerIngrediente"
+                @buscar-Receitas="navegar('MostrarReceitas')" />
 
-        <BotaoPrincipal texto="Buscar receitas!" />
+            <MostrarReceitas v-else-if="conteudo === 'MostrarReceitas'" :ingredientes="ingredientes"
+                @editarLista="navegar('SelecionarIngredientes')" />
+        </KeepAlive>
     </main>
 
 </template>
