@@ -1,40 +1,43 @@
-# cookin-up
+# Cookin' Up
 
-This template should help get you started developing with Vue 3 in Vite.
+Cookin' Up é um aplicativo web para ajudar usuários a selecionar ingredientes, explorar categorias e montar listas de receitas de forma prática e intuitiva.
 
-## Recommended IDE Setup
+## Funcionalidades
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Seleção de ingredientes por categorias
+- Visualização de receitas
+- Criação de listas personalizadas
+- Interface responsiva e intuitiva
 
-## Type Support for `.vue` Imports in TS
+## Estrutura do Projeto
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- `src/`: Código fonte principal
+  - `components/`: Componentes Vue reutilizáveis
+  - `assets/`: Arquivos de estilo e imagens
+  - `http/`: Configuração de requisições HTTP
+  - `interfaces/`: Tipos e interfaces TypeScript
+- `public/`: Arquivos públicos e imagens
+- `index.html`: Página principal
+- `vite.config.ts`: Configuração do Vite
+- `tsconfig*.json`: Configurações TypeScript
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Instalação
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+1. Clone o repositório:
+   ```
+   git clone https://github.com/seu-usuario/cookin-up.git
+   ```
+2. Instale as dependências:
+   ```
+   npm install
+   ```
+3. Inicie o servidor de desenvolvimento:
+   ```
+   npm run dev
+   ```
 
-## Customize configuration
+## Tecnologias Utilizadas
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+- [Vue.js](https://vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
