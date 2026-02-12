@@ -1,25 +1,38 @@
-<template>
-    <main class="conteudo-principal">
-        <SuaLista :ingredientes="ingredientes" />
-
-        <SelecionarIngredientes />
-    </main>
-</template>
-
 <script lang="ts">
 import SelecionarIngredientes from './SelecionarIngredientes.vue';
 import Tag from './Tag.vue';
 import SuaLista from './SuaLista.vue';
+import BotaoPrincipal from './BotaoPrincipal.vue';
 
 export default {
     data() {
         return {
-            ingredientes: ['Alho', 'Manteiga', 'Orégano']
+            ingredientes: [] as string[]
         };
     },
-    components: { SelecionarIngredientes, Tag, SuaLista }
+    components: { SelecionarIngredientes, Tag, SuaLista, BotaoPrincipal },
+    methods: {
+        adicionarIngrediente(ingrediente: string) {
+            this.ingredientes.push(ingrediente);
+        },
+        removerIngrediente(ingrediente: string) {
+            this.ingredientes = this.ingredientes.filter(i => i !== ingrediente);
+        }
+    },
 }
 </script>
+
+<template>
+    <main class="conteudo-principal">
+        <SuaLista :ingredientes="ingredientes" />
+
+        <SelecionarIngredientes @adicionar-ingrediente="adicionarIngrediente"
+            @remover-ingrediente="removerIngrediente" />
+
+        <BotaoPrincipal texto="Buscar receitas!" />
+    </main>
+
+</template>
 
 <style scoped>
 .conteudo-principal {
